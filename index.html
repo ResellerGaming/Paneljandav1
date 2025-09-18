@@ -132,32 +132,4 @@ async function doLogin(){
 function showMsg(txt,type){const m=document.getElementById('msg');m.className='msg '+(type||'');m.textContent=txt;}
 </script>
 </body>
-</html>  const btn=document.getElementById('loginBtn'),msg=document.getElementById('msg');
-  if(!u||!p){showMsg('❌ Username & password harus diisi','error');return;}
-  btn.disabled=true;btn.innerHTML='<div class="spinner"></div> Loading...';
-  try{
-    // 1. cek reseller.json
-    let res=await fetch('database/reseller.json');let data=await res.json());
-    let user=data.find(o=>o.username===u&&o.password===p);
-    if(user){window.location.href='/user/reseller/index.html';return;}
-    // 2. cek developer.json
-    res=await fetch('database/developer.json');data=await res.json());
-    user=data.find(o=>o.username===u&&o.password===p);
-    if(user){window.location.href='/user/developer/index.html';return;}
-    // 3. cek pt.json
-    res=await fetch('database/pt.json');data=await res.json());
-    user=data.find(o=>o.username===u&&o.password===p);
-    if(user){window.location.href='/user/pt/index.html';return;}
-    // 4. cek tk.json
-    res=await fetch('database/tk.json');data=await res.json());
-    user=data.find(o=>o.username===u&&o.password===p);
-    if(user){window.location.href='/user/tangankanan/index.html';return;}
-    // kalau tidak ketemu
-    showMsg('❌ Username atau password salah','error');
-  }catch(e){showMsg('❌ Terjadi kesalahan: '+e.message,'error')}
-  btn.disabled=false;btn.textContent='Login';
-}
-function showMsg(txt,type){const m=document.getElementById('msg');m.className='msg '+(type||'');m.textContent=txt;}
-</script>
-</body>
-</html>
+      </html>
